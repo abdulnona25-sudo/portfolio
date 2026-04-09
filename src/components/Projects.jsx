@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { LanguageContext } from "../LanguageContext";
+import bundrop from "../assets/images/bundrop.png";
+import barber from "../assets/images/barber.png";
 
 function Projects() {
   const { lang } = useContext(LanguageContext);
@@ -27,9 +29,9 @@ function Projects() {
         en: "Restaurant ordering web app built with React.",
         ar: "تطبيق طلب طعام مبني باستخدام React.",
       },
-      image: "src/assets/images/bundrop.png",
-      live: "https://bundrop.netlify.app/",
-      code: "https://github.com/abdulnona25-sudo/bun-drop",
+        image: bundrop,
+        live: "https://bundrop.netlify.app/",
+        code: "https://github.com/abdulnona25-sudo/bun-drop",
     },
     {
       name: {
@@ -40,9 +42,9 @@ function Projects() {
         en: "Barber booking website with modern UI.",
         ar: "موقع حجز حلاق بواجهة حديثة.",
       },
-      image: "src/assets/images/barber.png",
-      live: "https://fascinating-crepe-bd7c20.netlify.app/home",
-      code: "https://github.com/abdulnona25-sudo/barber-website",
+        image: barber,
+        live: "https://fascinating-crepe-bd7c20.netlify.app/home",
+        code: "https://github.com/abdulnona25-sudo/barber-website",
     },
   ];
 
