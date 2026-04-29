@@ -466,7 +466,10 @@ section { padding: 100px 0; }
 
 .project-card:hover .project-img { transform: scale(1.04); }
 
-.project-img-wrap { overflow: hidden; }
+.project-img-wrap {
+  overflow: hidden;
+  background-color: black;
+}
 
 .project-body {
   padding: 24px;
