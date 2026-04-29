@@ -32,7 +32,7 @@ export default function Projects() {
         ar: "موقع حجز حلاق بواجهة حديثة وأنيقة، يشمل قائمة الخدمات وتدفق الحجز وتصميماً متجاوباً.",
       },
       image: barber,
-      live: "https://barber-hx32j7966-abdulnona25-sudos-projects.vercel.app/",
+      live: "https://barber-flame-phi.vercel.app",
       code: "https://github.com/abdulnona25-sudo/barber-website",
       blank: false,
     },
