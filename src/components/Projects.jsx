@@ -3,81 +3,69 @@ import { LanguageContext } from "../LanguageContext";
 import bundrop from "../assets/images/bundrop.png";
 import barber from "../assets/images/barber.png";
 
-function Projects() {
+export default function Projects() {
   const { lang } = useContext(LanguageContext);
 
   const content = {
-    en: {
-      title: "Projects",
-      live: "Live Demo",
-      code: "Code",
-    },
-    ar: {
-      title: "المشاريع",
-      live: "عرض مباشر",
-      code: "الكود",
-    },
+    en: { label: "Work", title: "Projects", live: "Live Demo →", code: "View Code" },
+    ar: { label: "الأعمال", title: "المشاريع", live: "عرض مباشر →", code: "الكود" },
   };
 
   const projects = [
     {
-      name: {
-        en: "Bun Drop",
-        ar: "بن دروب",
-      },
+      tag: { en: "React App", ar: "تطبيق React" },
+      name: { en: "Bun Drop", ar: "بن دروب" },
       desc: {
-        en: "Restaurant ordering web app built with React.",
-        ar: "تطبيق طلب طعام مبني باستخدام React.",
+        en: "A full restaurant ordering web app built with React. Features a dynamic menu, cart system, and smooth order flow — designed for real-world use.",
+        ar: "تطبيق طلب طعام متكامل مبني بـ React، يتضمن قائمة ديناميكية وسلة تسوق وتدفق طلبات سلس.",
       },
-        image: bundrop,
-        live: "https://bundrop.netlify.app/",
-        code: "https://github.com/abdulnona25-sudo/bun-drop",
+      image: bundrop,
+      live: "https://bundrop.netlify.app/",
+      code: "https://github.com/abdulnona25-sudo/bun-drop",
     },
     {
-      name: {
-        en: "Barber App",
-        ar: "تطبيق الحلاق",
-      },
+      tag: { en: "React App", ar: "تطبيق React" },
+      name: { en: "Barber App", ar: "تطبيق الحلاق" },
       desc: {
-        en: "Barber booking website with modern UI.",
-        ar: "موقع حجز حلاق بواجهة حديثة.",
+        en: "A barber booking website with a modern, stylish UI. Includes service listings, booking flow, and polished responsive design.",
+        ar: "موقع حجز حلاق بواجهة حديثة وأنيقة، يشمل قائمة الخدمات وتدفق الحجز وتصميماً متجاوباً.",
       },
-        image: barber,
-        live: "https://fascinating-crepe-bd7c20.netlify.app/home",
-        code: "https://github.com/abdulnona25-sudo/barber-website",
+      image: barber,
+      live: "https://fascinating-crepe-bd7c20.netlify.app/home",
+      code: "https://github.com/abdulnona25-sudo/barber-website",
     },
   ];
 
+  const c = content[lang];
+
   return (
-    <section id="projects">
-      <h2 className="center">{content[lang].title}</h2>
-
-      <div className="projects-grid">
-        {projects.map((project, i) => (
-          <div className="project-card" key={i}>
-            
-            <img src={project.image} alt={project.name} />
-
-            <div className="project-content">
-              <h3>{project.name[lang]}</h3>
-              <p>{project.desc[lang]}</p>
-
-              <div className="project-buttons">
-                <a href={project.live} target="_blank">
-                  <button className="primary">{content[lang].live}</button>
-                </a>
-
-                <a href={project.code} target="_blank">
-                  <button className="outline">{content[lang].code}</button>
-                </a>
+    <section id="projects" className="projects-section">
+      <div className="container">
+        <p className="section-label">{c.label}</p>
+        <h2 className="section-title">{c.title}</h2>
+        <div className="projects-grid">
+          {projects.map((p, i) => (
+            <div className="project-card" key={i}>
+              <div className="project-img-wrap">
+                <img className="project-img" src={p.image} alt={p.name[lang]} />
+              </div>
+              <div className="project-body">
+                <span className="project-tag">{p.tag[lang]}</span>
+                <h3>{p.name[lang]}</h3>
+                <p>{p.desc[lang]}</p>
+                <div className="project-links">
+                  <a href={p.live} target="_blank" rel="noreferrer">
+                    <button className="project-link-btn filled">{c.live}</button>
+                  </a>
+                  <a href={p.code} target="_blank" rel="noreferrer">
+                    <button className="project-link-btn ghost">{c.code}</button>
+                  </a>
+                </div>
               </div>
             </div>
-
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
 }
-
-export default Projects;

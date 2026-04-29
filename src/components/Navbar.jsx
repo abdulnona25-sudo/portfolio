@@ -1,60 +1,54 @@
 import { useContext, useState } from "react";
 import { LanguageContext } from "../LanguageContext";
 
-function Navbar() {
+export default function Navbar() {
   const { lang, setLang } = useContext(LanguageContext);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const navItems = {
+  const items = {
     en: [
-      { name: "Home", id: "home" },
-      { name: "Projects", id: "projects" },
-      { name: "Skills", id: "skills" },
-      { name: "Contact", id: "contact" },
+      { label: "About", id: "about" },
+      { label: "Projects", id: "projects" },
+      { label: "Skills", id: "skills" },
+      { label: "Contact", id: "contact" },
     ],
     ar: [
-      { name: "الرئيسية", id: "home" },
-      { name: "المشاريع", id: "projects" },
-      { name: "المهارات", id: "skills" },
-      { name: "تواصل", id: "contact" },
+      { label: "عنّي", id: "about" },
+      { label: "المشاريع", id: "projects" },
+      { label: "المهارات", id: "skills" },
+      { label: "تواصل", id: "contact" },
     ],
   };
 
-  const handleScroll = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false);
-    }
+  const scroll = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setOpen(false);
   };
 
   return (
     <nav className="nav">
-      <h2 onClick={() => handleScroll("home")} style={{ cursor: "pointer" }}>
-        {lang === "en" ? "Abdelrahman" : "عبدالرحمن"}
-      </h2>
+      <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
+        <div className="nav-logo" onClick={() => scroll("home")}>
+          AH<span>.</span>
+        </div>
 
-      <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-        ☰
+        <ul className={`nav-links ${open ? "open" : ""}`}>
+          {items[lang].map((item) => (
+            <li key={item.id} onClick={() => scroll(item.id)}>
+              {item.label}
+            </li>
+          ))}
+        </ul>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <button className="nav-lang" onClick={() => setLang(lang === "en" ? "ar" : "en")}>
+            {lang === "en" ? "AR" : "EN"}
+          </button>
+          <button className="menu-toggle" onClick={() => setOpen(!open)} aria-label="Menu">
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
-
-      <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-        {navItems[lang].map((item, i) => (
-          <span
-            key={i}
-            onClick={() => handleScroll(item.id)}
-            style={{ cursor: "pointer" }}
-          >
-            {item.name}
-          </span>
-        ))}
-      </div>
-
-      <button onClick={() => setLang(lang === "en" ? "ar" : "en")}>
-        {lang === "en" ? "AR" : "EN"}
-      </button>
     </nav>
   );
 }
-
-export default Navbar;
