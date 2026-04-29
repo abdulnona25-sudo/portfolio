@@ -433,6 +433,7 @@ section { padding: 100px 0; }
   background: black;
   display: block;
   transition: transform 0.4s;
+    background: transparent !important
 }
 
 .project-img-placeholder {
@@ -471,7 +472,7 @@ section { padding: 100px 0; }
 
 .project-img-wrap {
   overflow: hidden;
-  background-color: black;
+  background: black !important;
 }
 
 .project-body {
