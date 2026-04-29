@@ -464,7 +464,10 @@ section { padding: 100px 0; }
   opacity: 0.7;
 }
 
-.project-card:hover .project-img { transform: scale(1.04); }
+.project-card:hover .project-img { 
+  transform: scale(1.04); 
+  background-color: #060608;
+}
 
 .project-img-wrap {
   overflow: hidden;
